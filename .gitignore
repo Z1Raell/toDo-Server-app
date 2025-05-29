@@ -1,0 +1,10 @@
+# Обычные папки
+node_modules/
+dist/
+.env
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
