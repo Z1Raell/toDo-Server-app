@@ -10,7 +10,7 @@ const loginSchema = z.object({
 })
 const jwtConfigSchema = z.object({
     secret: z.string().min(16, "JWT_SECRET is required"),
-    expiresIn: z.enum(["15m", "30m", "1h", "2h", "24h", "7d", "30d"])
+    expiresIn: z.enum(["15m","1d","30m", "1h", "2h", "24h", "7d", "30d"])
 })
 
 export const loginuser = async (req: Request, res: Response) => {
