@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import bcrypt from "bcryptjs"
-import User from "../moduls/user.model"
+import User from "../models/user.model"
 import { z } from "zod"
 import jwt from "jsonwebtoken"
 

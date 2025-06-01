@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Todo from "../moduls/todo.model"
+import Todo from "../models/todo.model"
 import { z } from "zod"
 
 const todoSchema = z.object({
@@ -34,6 +34,28 @@ export const createTodo = async (req: AuthRequest, res: Response) => {
         })
     } catch (error) {
         console.error("Create todo error:", error);
+        res.status(500).json({ message: "Server error" });
+
+    }
+}
+
+
+export const getTodo = async (req: AuthRequest, res: Response) => {
+    try {
+        const userId = req.userId
+
+        if (!userId) {
+            res.status(403).json({
+                message: "Unauthorizated"
+            })
+        }
+        const todos = await Todo.find({ userId })
+        res.status(200).json({
+            message: "Todo fetching succsesfull",
+            todos
+        })
+    } catch (error) {
+        console.error("Get todos error:", error);
         res.status(500).json({ message: "Server error" });
 
     }

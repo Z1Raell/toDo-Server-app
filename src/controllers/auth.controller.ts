@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import bcrypt from "bcryptjs"
-import User from "../moduls/user.model"
+import User from "../models/user.model"
 import { z } from "zod"
 
 const registerSchema = z.object({
@@ -28,7 +28,7 @@ export const registerUser = async (req: Request, res: Response) => {
         }
         const userExist = await User.findOne({ email })
         if (userExist) {
-            res.status(200).json({
+            res.status(409).json({
                 message: "user alredy exist"
             })
             return
