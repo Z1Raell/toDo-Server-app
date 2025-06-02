@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import authRout from "./routes/auth.rout"
 import loginRout from "./routes/login.rout"
 import createTodo from "./routes/todo.rout"
+import { authMiddleware } from "./middleware/auth.middleware";
 
 
 const app = express();
@@ -13,6 +14,6 @@ app.get("/", (_: Request, res: Response) => {
 })
 app.use("/api/auth", authRout)
 app.use("/api/auth", loginRout)
-app.use("/api/todo", createTodo)
+app.use("/api/todo",authMiddleware, createTodo)
 
 export default app

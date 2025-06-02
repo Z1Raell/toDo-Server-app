@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface ITodo extends Document {
