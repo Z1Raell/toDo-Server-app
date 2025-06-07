@@ -1,11 +1,13 @@
 import express, { Request, Response } from "express";
 import authRout from "./routes/auth.rout"
+import cors from "cors"
 import loginRout from "./routes/login.rout"
 import createTodo from "./routes/todo.rout"
 import { authMiddleware } from "./middleware/auth.middleware";
 
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 
