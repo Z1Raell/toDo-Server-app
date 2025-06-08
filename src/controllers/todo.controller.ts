@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import Todo from "../models/todo.model"
 import { z } from "zod"
-import { title } from "process";
 
 const todoSchema = z.object({
     title: z.string().min(1, "Title required"),
